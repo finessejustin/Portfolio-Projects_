@@ -1,0 +1,16 @@
+# Install Newman
+npm install -g newman newman-reporter-htmlextra
+
+# Export collection from Postman
+
+# Run collection
+newman run Fintech-Microservices.json \
+  -e environment.json \
+  -r htmlextra \
+  --reporter-htmlextra-export ./reports/api-test-report.html
+
+# Run in CI/CD
+newman run Fintech-Microservices.json \
+  -e production.json \
+  --bail \
+  --color on
