@@ -1,0 +1,17 @@
+pm.test("Login successful", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("JWT token returned", function () {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property('token');
+    
+    // Save token for authenticated requests
+    pm.environment.set('authToken', jsonData.token);
+});
+
+pm.test("Token is valid JWT format", function () {
+    const token = pm.response.json().token;
+    const jwtPattern = /^[A-Za-z0-9-_]+.[A-Za-z0-9-_]+.[A-Za-z0-9-_]+$/;
+    pm.expect(token).to.match(jwtPattern);
+});
