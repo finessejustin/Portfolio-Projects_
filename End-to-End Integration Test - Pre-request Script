@@ -1,0 +1,4 @@
+// Generate unique email for test
+const timestamp = new Date().getTime();
+const testEmail = `test${timestamp}@fintech.com`;
+pm.environment.set('testEmail', testEmail);

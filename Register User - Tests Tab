@@ -1,0 +1,21 @@
+// Test: Successful registration
+pm.test("Status code is 201", function () {
+    pm.response.to.have.status(201);
+});
+
+pm.test("Response has userId", function () {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData).to.have.property('userId');
+    
+    // Save for next requests
+    pm.environment.set('userId', jsonData.userId);
+});
+
+pm.test("Password not returned", function () {
+    const jsonData = pm.response.json();
+    pm.expect(jsonData).to.not.have.property('password');
+});
+
+pm.test("Response time < 500ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(500);
+});
