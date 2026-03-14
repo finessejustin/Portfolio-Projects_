@@ -1,8 +1,0 @@
-{
-  "baseUrl_user": "http://localhost:3001",
-  "baseUrl_payment": "http://localhost:3002",
-  "baseUrl_notification": "http://localhost:3003",
-  "authToken": "",
-  "userId": "",
-  "paymentId": ""
-}
